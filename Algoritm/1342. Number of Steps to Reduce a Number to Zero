@@ -1,14 +1,14 @@
 class Solution {
     public int numberOfSteps(int num) {
-        int numberStep = 0;
-        while(num != 0){
-            if(num % 2 == 0){
-                num /= 2;
-            } else {
-                num -= 1;
+        int numberStep = 0;                // variable for store to return the number of steps to reduce it to zero.
+        while(num != 0){                   // loopin untill num 0
+            if(num % 2 == 0){              // if num is odd
+                num /= 2;                  // num divide 2
+            } else {                       // else num is even
+                num -= 1;                  // num minus 1
             }
-            numberStep += 1;
+            numberStep += 1;               // add 1 numberStep
         }
-        return numberStep;
+        return numberStep;                 // return numberStep
     }
 }
