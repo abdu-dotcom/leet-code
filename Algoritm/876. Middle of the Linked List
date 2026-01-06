@@ -1,0 +1,11 @@
+class Solution {
+    public ListNode middleNode(ListNode head) {                 // ex: head = [1,2,3,4,5,6]
+        if(head==null || head.next == null) return head;        // Jika value head null, program dihentikan
+        ListNode slow=head,fast=head;                           // buat dua variable
+        while(fast != null && fast.next != null){               // program akan terus looping jika kondisi true
+            slow = slow.next;                                   // slow ambil angka selanjutnya. [1,2,3, 4] -> last value 3
+            fast = fast.next.next;                              // fast ambil angka dua selanjutnya. [2,4,6, null] -- last value null
+        }
+        return slow;
+    }
+}
