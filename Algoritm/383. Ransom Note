@@ -1,0 +1,25 @@
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        boolean output = false;
+
+        // mengubah string menjadi array agar bisa dicek satu satu kecocokan huruf antar string
+        char[] ransomNoteArray = ransomNote.toCharArray();
+        char[] magazineArray = magazine.toCharArray();
+
+        int i = 0; // i mempresentasi index setiap huruf rannsomNoteArray
+        for(int j = 0; j < magazineArray.length; j++){
+
+            // jika huruf ransomNoteArray tidak cocok dari 0 index. output false.
+            if(i < ransomNoteArray.length){
+                if(ransomNoteArray[i] ==magazineArray[j]){
+                    i += 1;
+                }else {
+                    i = 0;
+                }
+            }else{  // jika huruf ransomNoteArray  cocok dari 0 index. output true.
+                output = true;
+            }
+        }
+        return output;
+    }
+}
