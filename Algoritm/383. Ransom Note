@@ -1,25 +1,29 @@
 class Solution {
     public boolean canConstruct(String ransomNote, String magazine) {
         boolean output = false;
+        StringBuilder ransomNoteArray = new StringBuilder(new String(ransomNote)); // ['a','a','b']
+        StringBuilder magazineArray = new StringBuilder(new String(magazine)); // ['b','a','a']
+        StringBuilder temp = new StringBuilder();
 
-        // mengubah string menjadi array agar bisa dicek satu satu kecocokan huruf antar string
-        char[] ransomNoteArray = ransomNote.toCharArray();
-        char[] magazineArray = magazine.toCharArray();
-
-        int i = 0; // i mempresentasi index setiap huruf rannsomNoteArray
-        for(int j = 0; j < magazineArray.length; j++){
-
-            // jika huruf ransomNoteArray tidak cocok dari 0 index. output false.
-            if(i < ransomNoteArray.length){
-                if(ransomNoteArray[i] ==magazineArray[j]){
-                    i += 1;
-                }else {
-                    i = 0;
+        for(int i=0; i < ransomNoteArray.length(); i++){
+            for(int j=0; j < magazineArray.length(); j++){
+                if(ransomNoteArray.charAt(i) == magazineArray.charAt(j)){ // a <=> a
+                    if(temp.length() == 0){
+                        temp.append(ransomNoteArray.charAt(i));
+                        magazineArray.setCharAt(j, '0');
+                    }else{
+                        if(temp.length()-1 != i){
+                            temp.append(ransomNoteArray.charAt(i));
+                            magazineArray.setCharAt(j, '0');
+                        }
+                    }
                 }
-            }else{  // jika huruf ransomNoteArray  cocok dari 0 index. output true.
-                output = true;
             }
+        }
+        if (temp.toString().equals(ransomNoteArray.toString())){
+            output = true;
         }
         return output;
     }
 }
+    // code block to be executed for each element
