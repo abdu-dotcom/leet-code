@@ -1,0 +1,32 @@
+class Solution {
+    public String gcdOfStrings(String str1, String str2) {
+
+        // 1.mencari tau pola angka nya
+        int str1Length = str1.length();  // 6
+        int str2Length = str2.length();  // 3
+
+        String output = "";
+
+        String t = "";
+        int i = 0;
+        int repeat = 1;
+        String s = "";
+
+        while(i < str1Length){
+           t += str1.charAt(i);
+
+           if(str1Length % t.length() != 0 || str2Length % t.length() != 0){
+            i++; continue;
+           }
+
+           int repeatStr1 = str1Length / t.length();
+           int repeatStr2 = str2Length / t.length();
+
+           if(t.repeat(repeatStr1).equals(str1) && t.repeat(repeatStr2).equals(str2)){
+            output = t;
+           }
+           i++;
+        }
+        return  output;
+    }
+}
