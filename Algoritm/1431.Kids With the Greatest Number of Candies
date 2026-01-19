@@ -1,0 +1,29 @@
+class Solution {
+    public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+        // int array result
+        ArrayList<Boolean> output = new ArrayList<Boolean>(); // Create an ArrayList object
+
+        int max = 0;
+        // loop untuk mendapatkan nilai tertinggi
+        for(int candy: candies){
+            if (max < candy){
+                max = candy;
+            }
+        }
+
+        // mencari anak mana yg memiliki permen terbanyak dari yg paling banyak setelah ditambah extra permen
+        int index = 0;
+        for(int candie: candies){
+            int candieKid = candies[index];
+
+            candieKid = candieKid + extraCandies;
+            if (candieKid >= max) {
+                output.add(true);
+            }else {
+                output.add(false);
+            }
+            index++;
+        }
+        return output;
+    }
+}
